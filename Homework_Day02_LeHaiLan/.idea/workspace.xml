@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74a44348-05e9-4e11-b0c4-1af735c31937" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Demo1/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Demo1/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Demo1/src/com/company/Demo1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Demo1/out/production/Demo1/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo1/out/production/Demo1/com/company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Demo1/src/com/company/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +75,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
@@ -109,6 +108,8 @@
       <workItem from="1747473873482" duration="4680000" />
       <workItem from="1747478695543" duration="32000" />
       <workItem from="1747497058862" duration="1124000" />
+      <workItem from="1747499729950" duration="4000" />
+      <workItem from="1747499823600" duration="128000" />
     </task>
     <servers />
   </component>
