@@ -1,4 +1,5 @@
 package com.company;
+import java.util.Scanner;
 
 
 public class Main {
@@ -107,7 +108,7 @@ public class Main {
         // Gioi7 Quản lý thời gian
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Nhap thoi gian bat dau!");
+        System.out.println("Nhập thời gian bắt đầu!");
         System.out.print("Nhap so gio bat dau: ");
         int hourStart = sc.nextInt();
         System.out.print("Nhap so phut bat dau: ");
