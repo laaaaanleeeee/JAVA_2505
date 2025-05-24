@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+//        Scanner sc = new Scanner(System.in);
 
         // B1 Kiểm tra số nguyên
 //        System.out.print("Nhập vào 1 số nguyên: ");
@@ -73,6 +73,12 @@ public class Main {
 //                System.out.println(n + " x " + i + " = " + (n * i));
 //            }
 //        }
+
+
+
+        HocTruoc ht = new HocTruoc();
+        int val = ht.printInfo(5,100);
+        System.out.println(val);
 
     }
 }
