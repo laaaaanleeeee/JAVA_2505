@@ -4,6 +4,7 @@ import com.data.connection.ConnectionDB;
 import com.data.model.Product;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -44,6 +45,7 @@ public class Main {
         String userName = sc.nextLine();
         System.out.print("Mật khẩu: ");
         String pass = sc.nextLine();
+        int numEnter = 0;
 
         while (!accountDAO.getAccount(userName,pass)) {
             System.out.println("Tài khoản hoặc mật khẩu sai. Yêu cầu nhập lại!");
@@ -95,10 +97,10 @@ public class Main {
                 System.out.print("Bạn có chắc là muốn đăng xuất (Yes/No)? ");
                 sc = new Scanner(System.in);
                 String conti = sc.nextLine();
-                if(conti.equals("Yes")) {
+                if(conti.toLowerCase().equals(("Yes").toLowerCase())) {
                     chooseOption();
                 }
-                else if (conti.equals("No")) {
+                else if (conti.toLowerCase().equals(("No").toLowerCase())) {
                     showMenu();
                 }
         }
@@ -128,10 +130,10 @@ public class Main {
             System.out.print("Bạn có muốn tiếp tục các chức năng (Yes/No)? ");
             sc = new Scanner(System.in);
             String conti = sc.nextLine();
-            if(conti.equals("Yes")) {
+            if(conti.toLowerCase().equals(("Yes").toLowerCase())) {
                 showMenuProduct();
             }
-            else if (conti.equals("No")) {
+            else if (conti.toLowerCase().equals(("No").toLowerCase())) {
                 System.exit(0);
             }
 
@@ -147,50 +149,48 @@ public class Main {
             sc = new Scanner(System.in);
             id = sc.nextInt();
 
-            int numAffect = productDAO.delete(id);
-            if (numAffect > 0) {
-                System.out.println("Xoá điện thoại thành công, id = " + id);
-            } else {
-                System.out.println("Xoá không thành công, id không tồn tại");
-            }
+            productDAO.delete(id);
+
             System.out.println("=======================================================");
             System.out.print("Bạn có muốn tiếp tục các chức năng (Yes/No)? ");
             sc = new Scanner(System.in);
             String conti = sc.nextLine();
-            if(conti.equals("Yes")) {
+            if(conti.toLowerCase().equals(("Yes").toLowerCase())) {
                 showMenuProduct();
             }
-            else if (conti.equals("No")) {
+            else if (conti.toLowerCase().equals(("No").toLowerCase())) {
                 System.exit(0);
             }
 
         }
         else if (numChucNang == 2) {
-            System.out.println("**** Chức năng thêm sản phẩm mới");
-            System.out.print("Nhập tên sản phẩm mới: ");
-            sc = new Scanner(System.in);
-            String nameNewProduct = sc.nextLine();
-            System.out.print("Nhập giá sản phẩm mới: ");
-            sc = new Scanner(System.in);
-            int priceNewProduct = sc.nextInt();
-            System.out.print("Nhập tên thương hiệu sản phẩm mới: ");
-            sc = new Scanner(System.in);
-            String brandNewProduct = sc.nextLine();
-            System.out.print("Nhập số lượng tồn kho sản phẩm mới: ");
-            sc = new Scanner(System.in);
-            int stockNewProduct = sc.nextInt();
+                System.out.println("==== Nhập tên sản phẩm:");
+                sc = new Scanner(System.in);
+                String productName = sc.nextLine();
 
-            productDAO.addProduct(nameNewProduct, priceNewProduct, brandNewProduct, stockNewProduct);
-            System.out.println("=======================================================");
-            System.out.print("Bạn có muốn tiếp tục các chức năng (Yes/No)? ");
-            sc = new Scanner(System.in);
-            String conti = sc.nextLine();
-            if(conti.equals("Yes")) {
-                showMenuProduct();
-            }
-            else if (conti.equals("No")) {
-                System.exit(0);
-            }
+                System.out.println("==== Nhập giá tiền:");
+                int price = sc.nextInt();
+
+                System.out.println("==== Nhập tên thương hiệu:");
+                sc = new Scanner(System.in);
+                String brand = sc.nextLine();
+
+                System.out.println("==== Nhập tồn kho:");
+                int stock = sc.nextInt();
+
+                Product product = new Product(0,  productName, price, brand, stock);
+                productDAO.saveProduct(product);
+
+                System.out.println("=======================================================");
+                System.out.print("Bạn có muốn tiếp tục các chức năng (Yes/No)? ");
+                sc = new Scanner(System.in);
+                String conti = sc.nextLine();
+                if(conti.toLowerCase().equals(("Yes").toLowerCase())) {
+                    showMenuProduct();
+                }
+                else if (conti.toLowerCase().equals(("No").toLowerCase())) {
+                    System.exit(0);
+                }
         }
 
         else if(numChucNang == 3) {
@@ -220,10 +220,72 @@ public class Main {
             System.out.print("Bạn có muốn tiếp tục các chức năng (Yes/No)? ");
             sc = new Scanner(System.in);
             String conti = sc.nextLine();
-            if(conti.equals("Yes")) {
+            if(conti.toLowerCase().equals(("Yes").toLowerCase())) {
                 showMenuProduct();
             }
-            else if (conti.equals("No")) {
+            else if (conti.toLowerCase().equals(("No").toLowerCase())) {
+                System.exit(0);
+            }
+        }
+        else if(numChucNang == 5) {
+            sc = new Scanner(System.in);
+            System.out.print("Nhập vào từ khoá brand bạn muốn tìm kiếm: ");
+            String tuKhoa = sc.nextLine();
+
+            List<Product> products = productDAO.searchListProductByBrand(tuKhoa);
+            productDAO.show(products);
+
+            System.out.println("=======================================================");
+            System.out.print("Bạn có muốn tiếp tục các chức năng (Yes/No)? ");
+            sc = new Scanner(System.in);
+            String conti = sc.nextLine();
+            if(conti.toLowerCase().equals(("Yes").toLowerCase())) {
+                showMenuProduct();
+            }
+            else if (conti.toLowerCase().equals(("No").toLowerCase())) {
+                System.exit(0);
+            }
+        }
+
+        else if(numChucNang == 6) {
+            sc = new Scanner(System.in);
+            System.out.println("Nhập vào khoảng giá sản phẩm bạn muốn tìm kiếm!");
+            System.out.print("Nhập vào khoảng giá tối thiểu: ");
+            double price_start = sc.nextDouble();
+            System.out.print("Nhập vào khoảng giá tối đa: ");
+            double price_end = sc.nextDouble();
+
+            List<Product> products = productDAO.searchListProductByPrice(price_start, price_end);
+            productDAO.show(products);
+
+            System.out.println("=======================================================");
+            System.out.print("Bạn có muốn tiếp tục các chức năng (Yes/No)? ");
+            sc = new Scanner(System.in);
+            String conti = sc.nextLine();
+            if(conti.toLowerCase().equals(("Yes").toLowerCase())) {
+                showMenuProduct();
+            }
+            else if (conti.toLowerCase().equals(("No").toLowerCase())) {
+                System.exit(0);
+            }
+        }
+
+        else if(numChucNang == 7) {
+            sc = new Scanner(System.in);
+            System.out.print("Nhập vào số lượng tồn kho bạn muốn tìm kiếm: ");
+            int stock_in = sc.nextInt();
+
+            List<Product> products = productDAO.searchListProductByStock(stock_in);
+            productDAO.show(products);
+
+            System.out.println("=======================================================");
+            System.out.print("Bạn có muốn tiếp tục các chức năng (Yes/No)? ");
+            sc = new Scanner(System.in);
+            String conti = sc.nextLine();
+            if(conti.toLowerCase().equals(("Yes").toLowerCase())) {
+                showMenuProduct();
+            }
+            else if (conti.toLowerCase().equals(("No").toLowerCase())) {
                 System.exit(0);
             }
         }

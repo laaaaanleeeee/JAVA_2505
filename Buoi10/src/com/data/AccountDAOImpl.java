@@ -3,6 +3,7 @@ package com.data;
 import com.data.connection.ConnectionDB;
 import com.data.model.Account;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -15,10 +16,13 @@ public class AccountDAOImpl {
 
         try {
             conn = ConnectionDB.openConn();
-            Statement st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM account WHERE username = '" + userName + "' AND password = '" + pass + "'");
-            while (rs.next()) {
+            CallableStatement callSt = conn.prepareCall("CALL checkAccount(?,?)");
+            callSt.setString(1, userName);
+            callSt.setString(2, pass);
+
+            ResultSet rs = callSt.executeQuery();
+            if(rs.next()) {
                 return true;
             }
         } catch (Exception e) {
