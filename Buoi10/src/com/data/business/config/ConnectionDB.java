@@ -1,4 +1,4 @@
-package com.data.connection;
+package com.data.business.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

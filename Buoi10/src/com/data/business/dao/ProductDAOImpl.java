@@ -1,7 +1,7 @@
-package com.data;
+package com.data.business.dao;
 
-import com.data.connection.ConnectionDB;
-import com.data.model.Product;
+import com.data.business.config.ConnectionDB;
+import com.data.business.model.Product;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDAOImpl {
+public class ProductDAOImpl implements ProductDAO {
 
     public List<Product> getListProduct() {
         Connection conn = null;
@@ -34,28 +34,10 @@ public class ProductDAOImpl {
         } catch (Exception e) {
             System.out.println("Lỗi lấy dữ liệu!");
         }
-
         return products;
     }
 
-    public void show(List<Product> products) {
-        System.out.println("==== Danh sách sản phẩm ====");
 
-        System.out.println("---------------------------------");
-        System.out.println("|  Id  |  Product Name  |  Price  | Brand | Stock |");
-        products.forEach(product -> {
-            StringBuilder row = new StringBuilder();
-            row.append("|  " + product.getId());
-            row.append("|  " + product.getProductName());
-            row.append("|  " + product.getPrice());
-            row.append("|  " + product.getBrand());
-            row.append("|  " + product.getStock() + "   |");
-
-            System.out.println(row);
-        });
-        System.out.println("---------------------------------");
-
-    }
 
     public int delete(int id) {
         Connection conn = null;
@@ -95,24 +77,24 @@ public class ProductDAOImpl {
 //    }
 
 
-    public void updateProduct(int id,String nameNewProduct, int priceNewProduct, String brandNewProduct, int stockNewProduct) {
+    public int updateProduct(Product product) {
         Connection conn = null;
         int countAffect = 0;
         try {
             conn = ConnectionDB.openConn();
-            Statement st = conn.createStatement();
+            CallableStatement callSt = conn.prepareCall("CALL update_product(?,?,?,?,?)");
+            callSt.setInt(1, product.getId());
+            callSt.setString(2, product.getProductName());
+            callSt.setInt(3, product.getPrice());
+            callSt.setString(4, product.getBrand());
+            callSt.setInt(5, product.getStock());
+            countAffect = callSt.executeUpdate();
 
-            countAffect = st.executeUpdate("UPDATE products SET product_name = '"+ nameNewProduct +"', product_price = '" + priceNewProduct + "', brand = '" + brandNewProduct + "', stock = '" + stockNewProduct +"' WHERE product_id = '" + id + "'");
-
-            if(countAffect > 0) {
-                System.out.println("Cập nhật sản phẩm thành công");
-            }
-            else {
-                System.out.println("Cập nhật thất bại");
-            }
+            System.out.println("Cập nhật sản phẩm thành công!");
         } catch (Exception e) {
             System.out.println("Lỗi lấy dữ liệu!");
         }
+        return countAffect;
     }
 
     public int saveProduct(Product product) {
@@ -135,14 +117,14 @@ public class ProductDAOImpl {
         return countAffect;
     }
 
-    public List<Product> searchListProductByBrand(String tuKhoa) {
+    public List<Product> searchListProductByBrand(String brand_in) {
         Connection conn = null;
         List<Product> products = new ArrayList<>();
 
         try {
             conn = ConnectionDB.openConn();
             CallableStatement callSt = conn.prepareCall("CALL searchProductByBrand(?)");
-            callSt.setString(1, tuKhoa);
+            callSt.setString(1, brand_in);
 
             ResultSet rs = callSt.executeQuery();
             if (rs.next()) {

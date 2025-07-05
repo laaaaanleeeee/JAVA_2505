@@ -1,4 +1,4 @@
-package com.data.model;
+package com.data.business.model;
 
 public class Product {
     private int id;

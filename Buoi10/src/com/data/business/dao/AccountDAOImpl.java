@@ -1,16 +1,12 @@
-package com.data;
+package com.data.business.dao;
 
-import com.data.connection.ConnectionDB;
-import com.data.model.Account;
+import com.data.business.config.ConnectionDB;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
-public class AccountDAOImpl {
+public class AccountDAOImpl implements AccountDAO{
     public boolean getAccount(String userName, String pass) {
         Connection conn = null;
 
@@ -22,13 +18,10 @@ public class AccountDAOImpl {
             callSt.setString(2, pass);
 
             ResultSet rs = callSt.executeQuery();
-            if(rs.next()) {
-                return true;
-            }
+            return rs.next();
         } catch (Exception e) {
             System.out.println("Lỗi lấy dữ liệu!");
+            return false;
         }
-
-        return false;
     }
 }
