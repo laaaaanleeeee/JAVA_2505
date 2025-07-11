@@ -34,6 +34,7 @@ public class MainMenu {
                 break;
             case 3:
                 System.out.println("==== Chức năng Quản lý hoá đơn ====");
+                MenuInfoOrder.showMenuInfoOrder();
                 break;
             case 4:
                 System.out.println("==== Chức năng Quản lý doanh thu ====");
