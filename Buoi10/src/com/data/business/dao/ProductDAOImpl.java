@@ -113,6 +113,7 @@ public class ProductDAOImpl implements ProductDAO {
         }
         catch (Exception e) {
             System.out.println("Lỗi lấy dữ liệu!");
+            e.printStackTrace();
         }
         return countAffect;
     }
@@ -127,7 +128,7 @@ public class ProductDAOImpl implements ProductDAO {
             callSt.setString(1, brand_in);
 
             ResultSet rs = callSt.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 int id = rs.getInt("product_id");
                 String productName = rs.getString("product_name");
                 int price = rs.getInt("product_price");
@@ -137,7 +138,7 @@ public class ProductDAOImpl implements ProductDAO {
                 Product product = new Product(id, productName, price, brand, stock);
                 products.add(product);
             }
-            else {
+            if(products.isEmpty()) {
                 System.out.println("Không có sản phẩm phù hợp với từ khoá");
             }
         } catch (Exception e) {
@@ -159,7 +160,7 @@ public class ProductDAOImpl implements ProductDAO {
             callSt.setDouble(2, price_end);
 
             ResultSet rs = callSt.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 int id = rs.getInt("product_id");
                 String productName = rs.getString("product_name");
                 int price = rs.getInt("product_price");
@@ -169,7 +170,7 @@ public class ProductDAOImpl implements ProductDAO {
                 Product product = new Product(id, productName, price, brand, stock);
                 products.add(product);
             }
-            else {
+            if(products.isEmpty()) {
                 System.out.println("Không có sản phẩm phù hợp với từ khoá");
             }
         } catch (Exception e) {
@@ -189,7 +190,7 @@ public class ProductDAOImpl implements ProductDAO {
             callSt.setInt(1, stock_in);
 
             ResultSet rs = callSt.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 int id = rs.getInt("product_id");
                 String productName = rs.getString("product_name");
                 int price = rs.getInt("product_price");
@@ -199,7 +200,7 @@ public class ProductDAOImpl implements ProductDAO {
                 Product product = new Product(id, productName, price, brand, stock);
                 products.add(product);
             }
-            else {
+            if(products.isEmpty()) {
                 System.out.println("Không có sản phẩm phù hợp với từ khoá");
             }
         } catch (Exception e) {
