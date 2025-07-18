@@ -1,12 +1,15 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Product;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 public class ProductController {
@@ -46,5 +49,40 @@ public class ProductController {
     public ResponseEntity<?> createData6 () {
         return new ResponseEntity<>("Created account", HttpStatus.OK);
     }
+
+
+    @GetMapping("products")
+    public List<Product>  getAllProducts() {
+        List<Product> products = new ArrayList<>();
+
+        products.add(new Product(1, "Car", 10));
+        products.add(new Product(2, "Bike", 5));
+
+        return products;
+    }
+
+    @GetMapping("getById")
+    public Product getProductById() {
+        List<Product> products = new ArrayList<>();
+
+        products.add(new Product(1, "Car", 10));
+        products.add(new Product(2, "Bike", 5));
+
+        return products.get(1);
+    }
+
+
+    @GetMapping("listProducts")
+    public ResponseEntity<?> getListProducts() {
+        List<Product> products = new ArrayList<>();
+
+        products.add(new Product(1, "Car", 10));
+        products.add(new Product(2, "Bike", 5));
+
+        Product airplane = new Product(3, "Airbus",  100);
+        return new ResponseEntity<>(airplane, HttpStatus.OK);
+    }
+
+
 }
 
