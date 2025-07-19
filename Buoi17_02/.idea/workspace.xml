@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="81b0ae5e-15ec-4b41-8f20-70bc007a715f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Buoi17/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Buoi17/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Buoi17/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Buoi17/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Buoi17/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Buoi17/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Buoi17/src/main/java/com/data/Buoi17Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Buoi17/src/main/java/com/data/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Buoi17/src/main/java/com/data/dto/ProductCreateDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Buoi17/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Buoi17/src/test/java/com/data/Buoi17ApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo2/src/main/java/com/example/demo/controller/AccountController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo2/src/main/java/com/example/demo/dto/AccountCreateDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo2/src/main/java/com/example/demo/entity/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo2/src/main/java/com/example/demo/repository/AccountRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BTVN_Buoi16_LeHaiLan/src/main/java/com/data/controller/AllTaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BTVN_Buoi16_LeHaiLan/src/main/java/com/data/controller/AllTaskController.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="3036WpV9gvIuYBSNO1Pj1zReXVU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="81b0ae5e-15ec-4b41-8f20-70bc007a715f" name="Changes" comment="" />
+      <created>1752843943343</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1752843943343</updated>
+      <workItem from="1752843944590" duration="925000" />
+      <workItem from="1752846282739" duration="3000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

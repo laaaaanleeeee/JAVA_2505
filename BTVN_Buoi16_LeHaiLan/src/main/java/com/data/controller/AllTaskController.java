@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class AllTaskController {
 
     @GetMapping("hello")
-    public ResponseEntity<?> GetHW() {
+    public ResponseEntity<?> getHW() {
         return new ResponseEntity<>("Hello Spring Boot", HttpStatus.OK);
     }
 
     @GetMapping("greet")
-    public ResponseEntity<?> Greet(
+    public ResponseEntity<?> greet(
             @RequestParam(required = false, defaultValue = "Chào bạn") String name
     ) {
         return new ResponseEntity<>(name, HttpStatus.OK);
@@ -24,12 +24,24 @@ public class AllTaskController {
 
 
     @GetMapping("sum")
-    public ResponseEntity<?> Sum(
-            @RequestParam(required = false, defaultValue = "Tổng: 0") Integer a,
-            @RequestParam(required = false, defaultValue = "Tổng: 0") Integer b
-    ) {
-        Integer sum = a + b;
-        return new ResponseEntity<>("Tổng: " + sum, HttpStatus.OK);
+    public ResponseEntity<?> sum(
+            @RequestParam(required = false) Integer a,
+            @RequestParam(required = false) Integer b) {
+        if(a == null && b == null) {
+            return new ResponseEntity<>("Không truyền dữ liệu cả 2", HttpStatus.BAD_REQUEST);
+        }
+        else if (a == null || b == null) {
+            return new ResponseEntity<>("Tổng: 0", HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>("Tổng: " + (a+b), HttpStatus.OK);
+
+        }
+    }
+
+    @GetMapping("users/{userId}")
+    public ResponseEntity<?> getUsers(@PathVariable Integer userId) {
+        return new ResponseEntity<>("User có ID: " + userId, HttpStatus.OK);
     }
 
     @GetMapping("users/{userId}/posts/{postId}")
@@ -46,9 +58,15 @@ public class AllTaskController {
 
 
     @GetMapping("rectangle/{width}/{height}")
-    public ResponseEntity<?> GetArea(@PathVariable Integer width,
-                                     @PathVariable Integer height) {
-        return new ResponseEntity<>("Diện tích HCN là: " + (width * height), HttpStatus.OK);
+    public ResponseEntity<?> getArea(@PathVariable String width,
+                                     @PathVariable String height) {
+        try {
+            Integer width2 = Integer.parseInt(width);
+            Integer height2 = Integer.parseInt(height);
+            return new ResponseEntity<>("Diện tích HCN là: " + (width2 * height2), HttpStatus.OK);
+        }catch (Exception e) {
+            return new ResponseEntity<>("Tham số truyền 2 cạnh HCN phải là số", HttpStatus.BAD_REQUEST);
+        }
     }
 
 }
