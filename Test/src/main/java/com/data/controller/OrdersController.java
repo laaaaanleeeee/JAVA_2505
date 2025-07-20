@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -41,8 +42,10 @@ public class OrdersController {
         orders.setProductName(createOrdersDto.getProductName());
         orders.setProductPrice(createOrdersDto.getProductPrice());
         orders.setQuantity(createOrdersDto.getQuantity());
-        orders.setOrderDate(createOrdersDto.getOrderDate());
-        orders.setUpdateDate(createOrdersDto.getUpdateDate());
+
+        Date currentDate = new Date();
+        orders.setOrderDate(currentDate);
+        orders.setUpdateDate(currentDate);
 
         ordersRepo.save(orders);
         return new ResponseEntity<>("Tạo đơn hàng mới thành công với ID là: " + orders.getId(), HttpStatus.OK);
