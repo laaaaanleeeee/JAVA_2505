@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Account</title>
+
+    <style>
+        .admin {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Danh sách tài khoản</h1>
+    <table border="1">
+        <thead>
+            <th>Id</th>
+            <th>Username</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr th:each="obj: ${accounts}">
+                <td th:text="${obj.id}">Id</td>
+                <td th:text="${obj.username}">Username</td>
+                <td><a th:attrData="${obj.username}" th:class="${'admin customer-' + obj.id}" th:href="${'/account-delete/' + obj.id}">Delete</a></td>
+<!--                <td><a th:href="@{/account-delete-data/${obj.id}}">Delete</a></td>-->
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
