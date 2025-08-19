@@ -33,11 +33,9 @@ public class Product {
     int quantity;
 
     @Column(name = "created_date", unique = false, nullable = true)
-    @Temporal(TemporalType.TIMESTAMP)
     LocalDateTime createdDate;
 
     @Column(name = "updated_date", unique = false, nullable = true)
-    @Temporal(TemporalType.TIMESTAMP)
     LocalDateTime updatedDate;
 
     @Column(name = "img_url", unique = false, nullable = true, columnDefinition = "VARCHAR(255)")
@@ -45,4 +43,8 @@ public class Product {
 
     @Column(name = "status", unique = false, nullable = false, columnDefinition = "ENUM('Active', 'Inactive') DEFAULT 'Active'")
     String status;
+
+    @ManyToOne
+            @JoinColumn(name = "category_id")
+    Category category;
 }

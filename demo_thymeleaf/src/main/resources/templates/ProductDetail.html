@@ -7,21 +7,22 @@
 </head>
 <body>
     <div class="container mt-4">
-       <div class="row">
-           <div class="col-md-6">
-               <img th:src="${product.imgUrl}" class="img-fluid">
-           </div>
-           <div class="colmd-6">
-               <h2 th:text="${product.productName}">Tên sản phẩm</h2>
-               <p><strong>Thương hiệu:</strong> <span th:text="${product.brand}">Thương hiệu</span></p>
-               <p><strong>Giá:</strong> <span th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')} + ' VNĐ'">Giá</span></p>
-               <p><strong>Số lượng còn:</strong> <span th:text="${product.quantity}">10</span></p>
-               <p><strong>Mô tả:</strong> <span th:text="${product.description}">Mô tả chi tiết</span></p>
-               <p><strong>Trạng thái:</strong> <span th:text="${product.status}">Active</span></p>
-               <p><strong>Ngày tạo:</strong> <span th:text="${#temporals.format(product.createdDate, 'dd/MM/yyyy HH:mm')}">Ngày tạo</span></p>
-               <a href="/products" class="btn btn-secondary mt-3">Quay lại</a>
-           </div>
-       </div>
+        <div class="row">
+            <div class="col-md-6">
+                <img th:src="${product.imgUrl}" class="img-fluid">
+            </div>
+            <div class="colmd-6">
+                <h2 th:text="${product.productName}">Tên sản phẩm</h2>
+                <p><strong>Thương hiệu:</strong> <span th:text="${product.brand}">Thương hiệu</span></p>
+                <p><strong>Giá:</strong> <span th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')} + ' VNĐ'">Giá</span></p>
+                <p><strong>Số lượng còn:</strong> <span th:text="${product.quantity}">10</span></p>
+                <p><strong>Mô tả:</strong> <span th:text="${product.description}">Mô tả chi tiết</span></p>
+                <p><strong>Trạng thái:</strong> <span th:text="${product.status}">Active</span></p>
+                <p><strong>Ngày tạo:</strong> <span th:text="${#temporals.format(product.createdDate, 'dd/MM/yyyy HH:mm')}">Ngày tạo</span></p>
+                <a href="/list-products" class="btn btn-secondary mt-3">Quay lại</a>
+                <a href="#" class="btn btn-warning mt-3">Mua hàng</a>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
